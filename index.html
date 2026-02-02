@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Walentynka?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 28px;
+        }
+
+        .buttons {
+            position: relative;
+            height: 80px;
+        }
+
+        button {
+            padding: 14px 32px;
+            font-size: 18px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s ease;
+            position: absolute;
+        }
+
+        #yes {
+            background: #ff4d6d;
+            color: white;
+            left: 50%;
+            transform: translateX(-120%);
+        }
+
+        #yes:hover {
+            background: #ff1e4d;
+            transform: translateX(-120%) scale(1.05);
+        }
+
+        #no {
+            background: #555;
+            color: white;
+            left: 50%;
+            transform: translateX(20%);
+        }
+
+        .success {
+            display: none;
+            font-size: 24px;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1 id="question">Czy zostaniesz moją walentynką? 💘</h1>
+
+    <div class="buttons">
+        <button id="yes">Tak 💖</button>
+        <button id="no">Nie 😅</button>
+    </div>
+
+    <div class="success" id="success">
+        Wiedziałem! 🥰💞
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+    const question = document.getElementById('question');
+    const success = document.getElementById('success');
+
+    noBtn.addEventListener('mouseover', () => {
+        const x = Math.random() * 200 - 100;
+        const y = Math.random() * 100 - 50;
+        noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    yesBtn.addEventListener('click', () => {
+        question.style.display = 'none';
+        document.querySelector('.buttons').style.display = 'none';
+        success.style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
